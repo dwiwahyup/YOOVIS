@@ -67,6 +67,7 @@
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
                                     <button class="btn btn-primary" type="submit">Submit</button>
+                                    
                                     <a href="{{ route('kerusakanlaptop.index') }}"><button class="btn btn-default" type="button">Cancel</button></a>
                                     </div>
                                 </div>
