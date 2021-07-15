@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKerusakanLaptopTable extends Migration
+class CreateCheckoutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateKerusakanLaptopTable extends Migration
      */
     public function up()
     {
-        Schema::create('kerusakan_laptop', function (Blueprint $table) {
+        Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
-            $table->string('jenis_kerusakan');
-            $table->string('harga');
+            $table->unsignedInteger('transaction_id');
+            $table->string('status');
+            $table->string('bukti_pembayaran');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateKerusakanLaptopTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kerusakan_laptop');
+        Schema::dropIfExists('checkouts');
     }
 }

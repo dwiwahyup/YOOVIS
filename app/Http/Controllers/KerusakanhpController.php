@@ -29,11 +29,10 @@ class KerusakanhpController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        { 
+    { {
             $kerusakan_hp = null;
             $admin_lecturer = "Menambahkan";
-            return view('backend/kerusakanhp.create', compact('kerusakan_hp','admin_lecturer'));
+            return view('backend/kerusakanhp.create', compact('kerusakan_hp', 'admin_lecturer'));
         }
     }
 
@@ -49,8 +48,8 @@ class KerusakanhpController extends Controller
             'jenis_kerusakan' => $request->jenis_kerusakan,
             'harga' => $request->harga,
         ]);
-        return redirect()->route('kerusakanhp.index')
-            ->with('success','Data berhasil ditambahkan.');
+        return redirect()->route('admin.kerusakanhp.index')
+            ->with('success', 'Data berhasil ditambahkan.');
     }
 
     /**
@@ -72,9 +71,9 @@ class KerusakanhpController extends Controller
      */
     public function edit($id)
     {
-            $kerusakan_hp = Kerusakanhp::where('id', $id)->first();
-            $admin_lecturer = "Mengubah";
-            return view('backend/kerusakanhp.create', compact('kerusakan_hp','admin_lecturer'));
+        $kerusakan_hp = Kerusakanhp::where('id', $id)->first();
+        $admin_lecturer = "Mengubah";
+        return view('backend/kerusakanhp.create', compact('kerusakan_hp', 'admin_lecturer'));
     }
 
     /**
@@ -91,8 +90,8 @@ class KerusakanhpController extends Controller
         $kerusakan_hp->jenis_kerusakan = $request->jenis_kerusakan;
         $kerusakan_hp->harga = $request->harga;
         $kerusakan_hp->save();
-        return redirect()->route('kerusakanhp.index')
-                        ->with('success','Data berhasil diperbaharui.');
+        return redirect()->route('admin.kerusakanhp.index')
+            ->with('success', 'Data berhasil diperbaharui.');
     }
 
     /**
@@ -104,7 +103,7 @@ class KerusakanhpController extends Controller
     public function destroy(Kerusakanhp $kerusakanhp)
     {
         $kerusakanhp->delete();
-        return redirect()->route('kerusakanhp.index')
-                        ->with('success','Data berhasil dihapus.');
+        return redirect()->route('admin.kerusakanhp.index')
+            ->with('success', 'Data berhasil dihapus.');
     }
 }

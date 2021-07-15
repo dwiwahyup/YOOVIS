@@ -24,33 +24,38 @@ Route::get('/', function () {
 
 Route::get('/service', function () {
     return view('frontend.gedget');
-}) ->name('service');
+})->name('service');
 
 Route::get('/service-smartphone', function () {
     return view('frontend.service-smartphone');
-}) ->name('service-smartphone');
+})->name('service-smartphone');
 
 Route::get('/service-laptop', function () {
     return view('frontend.service-laptop');
-}) ->name('service-laptop');
+})->name('service-laptop');
 
 Route::get('/service-printer', function () {
     return view('frontend.service-printer');
-}) ->name('service-printer');
+})->name('service-printer');
 
 Route::get('/total', function () {
     return view('frontend.service-smartphone');
-}) ->name('total');
+})->name('total');
 
 Route::get('/user', function () {
     return view('frontend.home');
 })->name('user');
 
 Auth::routes();
-Route::resource('barang', 'BarangController');
-Route::resource('pengguna', 'PenggunaController');
-Route::resource('kerusakanhp', 'KerusakanhpController');
-Route::resource('kerusakanlaptop', 'KerusakanlaptopController');
-Route::resource('kerusakanprinter', 'KerusakanprinterController');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+// route dengan prefix admin
+Route::group(['prefix' => 'admin', 'middleware' => ['roleAdmin']], function () {
+    // route dengan role admin
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('/category', 'CategoryController', ['as' => 'admin']);
+    Route::resource('/barang', 'BarangController', ['as' => 'admin']);
+    Route::resource('/pengguna', 'PenggunaController', ['as' => 'admin']);
+    Route::resource('/kerusakanhp', 'KerusakanhpController', ['as' => 'admin']);
+    Route::resource('/kerusakanlaptop', 'KerusakanlaptopController', ['as' => 'admin']);
+    Route::resource('/kerusakanprinter', 'KerusakanprinterController', ['as' => 'admin']);
+    Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('admin.profile.index');
+});
