@@ -17,6 +17,7 @@ class Transaction extends Model
         'waktu',
         'alamat',
         'promo',
+        'total',
     ];
 
     public function kerusakan()

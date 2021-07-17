@@ -52,6 +52,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['roleAdmin']], function () {
     // route dengan role admin
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('/category', 'CategoryController', ['as' => 'admin']);
+    Route::resource('/kerusakan', 'KerusakanController', ['as' => 'admin']);
     Route::resource('/barang', 'BarangController', ['as' => 'admin']);
     Route::resource('/pengguna', 'PenggunaController', ['as' => 'admin']);
     Route::resource('/kerusakanhp', 'KerusakanhpController', ['as' => 'admin']);

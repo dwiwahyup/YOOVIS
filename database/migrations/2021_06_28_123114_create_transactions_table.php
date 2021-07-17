@@ -22,6 +22,7 @@ class CreateTransactionsTable extends Migration
             $table->time('waktu');
             $table->string('alamat');
             $table->string('promo')->nullable();
+            $table->string('total');
             $table->timestamps();
         });
     }
