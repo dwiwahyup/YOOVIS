@@ -10,6 +10,7 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
+        'category_id',
         'merk',
         'type',
         'kerusakan_id',
@@ -23,6 +24,10 @@ class Transaction extends Model
     public function kerusakan()
     {
         return $this->belongsTo(Kerusakan::class);
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function checkout()

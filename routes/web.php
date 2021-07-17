@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\KerusakanhpController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\AssignOp\Concat;
@@ -26,9 +27,8 @@ Route::get('/service', function () {
     return view('frontend.gedget');
 })->name('service');
 
-Route::get('/service-smartphone', function () {
-    return view('frontend.service-smartphone');
-})->name('service-smartphone');
+Route::get('/service-smartphone', [TransactionController::class, 'serviceHp'])->name('service-smartphone');
+Route::post('/service-smartphone', [TransactionController::class, 'transactionHp'])->name('trx.service-smartphone');
 
 Route::get('/service-laptop', function () {
     return view('frontend.service-laptop');
@@ -53,6 +53,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['roleAdmin']], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('/category', 'CategoryController', ['as' => 'admin']);
     Route::resource('/kerusakan', 'KerusakanController', ['as' => 'admin']);
+    Route::get('/transaction', [App\Http\Controllers\TransactionController::class, 'index'])->name('admin.transaction.index');
+    Route::post('/transaction/{transaction}', [App\Http\Controllers\TransactionController::class, 'destroy'])->name('admin.transaction.destroy');
     Route::resource('/barang', 'BarangController', ['as' => 'admin']);
     Route::resource('/pengguna', 'PenggunaController', ['as' => 'admin']);
     Route::resource('/kerusakanhp', 'KerusakanhpController', ['as' => 'admin']);
