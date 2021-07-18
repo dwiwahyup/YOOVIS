@@ -43,7 +43,7 @@
                 <input type="file" value="upload gambar"/>
               </div>
               <div class="form-group col-sm-12">
-                <button type="button" class="btn btn-primary btn-block">Proceed</button>
+                <button type="button" class="btn btn-primary btn-block">Proses</button>
               </div>
             </div>
           </div>

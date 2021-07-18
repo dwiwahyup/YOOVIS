@@ -42,6 +42,10 @@ Route::get('/checkout', function () {
     return view('frontend.checkout');
 })->name('checkout');
 
+Route::get('/cek-status', function () {
+    return view('frontend.cek-status');
+})->name('cek-status');
+
 Route::get('/user', function () {
     return view('frontend.home');
 })->name('user');
