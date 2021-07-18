@@ -38,9 +38,13 @@ Route::get('/service-printer', function () {
     return view('frontend.service-printer');
 })->name('service-printer');
 
-Route::get('/total', function () {
-    return view('frontend.service-smartphone');
-})->name('total');
+Route::get('/checkout', function () {
+    return view('frontend.checkout');
+})->name('checkout');
+
+Route::get('/cek-status', function () {
+    return view('frontend.cek-status');
+})->name('cek-status');
 
 Route::get('/user', function () {
     return view('frontend.home');
