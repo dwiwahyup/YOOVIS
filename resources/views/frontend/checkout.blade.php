@@ -2,23 +2,58 @@
 
 @section('content')
 
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center">
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                <h1 data-aos="fade-up">Selamat Datang di YooVis</h1>
-                <h2 data-aos="fade-up" data-aos-delay="400">Pesan Sekarang Layanan Terbaik Dari Kami</h2>
-                <div data-aos="fade-up" data-aos-delay="800">
-                    <a href="#services" class="btn-get-started scrollto">Pesan Jasa</a>
-                </div>
-            </div>
-            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
-                <img src={{ asset('frontend/assets/img/hero-img.png')}} class="img-fluid animated" alt="">
-            </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('frontend/assets/css/payment.css')}}">
+</head>
+<body>
+  <main class="page payment-page">
+    <section class="payment-form dark">
+      <div class="container">
+        <div class="block-heading">
+          <h2>Pembayaran</h2>
+          <p>Lakukan Pembayaran sesuai dengan nominal yang tertera lalu upload bukti pembayaran di form bukti pembayaran</p>
         </div>
-    </div>
+        <form>
+          <div class="products">
+            <h3 class="title">Checkout</h3>
+            <div class="item">
+              <span class="price">$200</span>
+              <p class="item-name">Product 1</p>
+              <p class="item-description">Lorem ipsum dolor sit amet</p>
+            </div>
+            <div class="item">
+              <span class="price">$120</span>
+              <p class="item-name">Product 2</p>
+              <p class="item-description">Lorem ipsum dolor sit amet</p>
+            </div>
+            <div class="total">Total<span class="price">$320</span></div>
+          </div>
+          <div class="card-details">
+            <h3 class="title">Form Bukti Pembayaran</h3>
+            <div class="row">
+              <div class="form-group col-sm-7">
+                <label for="card-holder">Upload Bukti Pembayaran</label>
+                <input type="file" value="upload gambar"/>
+              </div>
+              <div class="form-group col-sm-12">
+                <button type="button" class="btn btn-primary btn-block">Proceed</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
 
-</section>
-<!-- End Hero -->
