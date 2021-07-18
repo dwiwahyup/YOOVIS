@@ -15,6 +15,7 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('category_id');
             $table->string('merk');
             $table->string('type');
             $table->unsignedInteger('kerusakan_id');
@@ -22,6 +23,7 @@ class CreateTransactionsTable extends Migration
             $table->time('waktu');
             $table->string('alamat');
             $table->string('promo')->nullable();
+            $table->string('total');
             $table->timestamps();
         });
     }
