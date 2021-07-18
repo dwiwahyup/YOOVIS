@@ -101,31 +101,30 @@ class TransactionController extends Controller
     public function transactionHp(Request $request)
     {
         # code...
-        $this->validate($request, [
-            'merk'       => 'required',
-            'type'   => 'required',
-            'kerusakan'             => 'required',
-            'tanggal' => 'required',
-            'waktu' => 'required',
-            'alamat' => 'required',
-        ]);
 
         $category_id = $request->category_id;
 
         //save to DB
         $transaction = Transaction::create([
-            'category_id'   => $request->$category_id,
+            'category_id'   => $category_id,
             'merk' => $request->merk,
             'type'         => $request->type,
-            'type'         => $request->type,
+            // 'kerusakan_id' => implode(",", $request['kerusakan']),
+            'kerusakan_id'         => $request->kerusakan,
+            'tanggal'         => $request->tanggal,
+            'waktu'         => $request->waktu,
+            'alamat'         => $request->alamat,
+            'promo'         => null,
+            'total'         => $request->total,
+
         ]);
 
         if ($transaction) {
             //redirect dengan pesan sukses
-            return redirect()->route('admin.kerusakan.index')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
         } else {
             //redirect dengan pesan error
-            return redirect()->route('admin.kerusakan.index')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 }

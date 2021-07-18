@@ -28,7 +28,7 @@ Route::get('/service', function () {
 })->name('service');
 
 Route::get('/service-smartphone', [TransactionController::class, 'serviceHp'])->name('service-smartphone');
-Route::post('/service-smartphone', [TransactionController::class, 'transactionHp'])->name('trx.service-smartphone');
+Route::post('/service-smartphone', [TransactionController::class, 'transactionHp'])->name('transaksi.hp');
 
 Route::get('/service-laptop', function () {
     return view('frontend.service-laptop');

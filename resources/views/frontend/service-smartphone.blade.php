@@ -19,8 +19,8 @@
                             <fieldset>
                                 <div class="service">
                                     <div class="col-lg-12 col-md-12" data-aos="fade-up" data-aos-delay="300">
-                                        <form role="form" name="serviceHp" action="{{route('trx.service-smartphone')}}"
-                                            method="post" class="php-email-form">
+                                        <form action="{{route('transaksi.hp')}}" method="post">
+                                            {{csrf_field()}}
                                             <input type="text" value="{{$category->id}}" name="category_id" hidden>
                                             <label class="subtitle">Info Smartphone Anda</label>
                                             <hr>
@@ -45,21 +45,21 @@
                                                                     value="{{$item->harga}}"
                                                                 onclick='checkCtrl({{$loop->iteration}});'> --}}
                                                                 <input class="checkbox" id="{{$loop->iteration}}"
-                                                                    type="checkbox" data-price="{{$item->harga}}"
+                                                                    type="checkbox" data-price="{{$item->harga}}" name="kerusakan"
                                                                     value="{{$item->id}}">
                                                                 {{$item->jenis_kerusakan}}
                                                             </label>
                                                         </div>
                                                     </div>
                                                     @endforeach
-                                                    <span class="price">0</span>
+                                                    {{-- <span class="price">0</span> --}}
                                                     <input type="number" id="total" name="total" hidden>
 
                                                     <label class="subtitle">Kapan Anda Membutuhkan Layanan Ini?</label>
                                                     <hr>
                                                     <div class="form-group">
                                                         <label class="subtitle2">Tanggal</label>
-                                                        <input type="date" name="date" class="form-control"
+                                                        <input type="date" name="tanggal" class="form-control"
                                                             placeholder="Click here to select a date" required>
                                                     </div>
                                                     <div class="form-group" id="datetime">
@@ -89,11 +89,10 @@
                                                             placeholder="Jember" required>
                                                     </div>
                                                     <div class="alert alert-success" id="msg" role="alert">
-
+                                                        <h3><strong>Total : <span class="price"></span></strong></h3>
                                                     </div>
-                                                    <div><button type="submit">Send
+                                                    <button type="submit">Send
                                                             Message</button>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </form>
@@ -194,6 +193,7 @@
             tempsum = parseInt(tempsum) + parseInt($(this).attr('data-price'))
         });
         $('.price').html(tempsum);
+        $('#total').val(tempsum);
     });
 
 </script>

@@ -73,7 +73,6 @@
                                   <div class="btn-group">
                                     <form action="{{ route('admin.transaction.destroy', $row->id)}}" method="POST">
                                       @csrf
-                                      @method('DELETE')
                                       <button type="submit" class="btn btn-danger" name="button"
                                       onclick="return confirm('Apakah anda yakin menghapus data ini ?')">
                                         <i class="fa fa-trash"></i>
