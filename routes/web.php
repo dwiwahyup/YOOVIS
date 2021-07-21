@@ -32,7 +32,7 @@ Route::get('/service-smartphone', [TransactionController::class, 'serviceHp'])->
 Route::post('/service-smartphone', [TransactionController::class, 'transactionHp'])->name('transaksi.hp');
 
 Route::get('/checkout/{id}', [CheckoutController::class, 'index'])->name('checkout.index');
-Route::put('/checkout', [CheckoutController::class, 'update'])->name('checkout.update');
+Route::put('/checkout/{id}', [CheckoutController::class, 'update'])->name('checkout.update');
 Route::get('/keranjang', [TransactionController::class, 'keranjang'])->name('transaction.keranjang');
 
 Route::get('/service-laptop', function () {

@@ -37,7 +37,7 @@
                     </div>
                     <div class="card-details">
                         <h3 class="title">Form Bukti Pembayaran</h3>
-                        <form action="{{route('checkout.update', ['id' => $checkout->id])}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('checkout.update', $checkout->id)}}" method="POST" enctype="multipart/form-data">
                             {{csrf_field()}}
                             @method('PUT')
                             <div class="row">
