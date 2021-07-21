@@ -88,11 +88,10 @@
                                                         <input type="text" name="alamat" class="form-control" id="name"
                                                             placeholder="Jember" required>
                                                     </div>
-                                                    <div class="alert alert-success" id="msg" role="alert">
+                                                    <div class="alert alert-success mt-3" id="msg" role="alert">
                                                         <h3><strong>Total : <span class="price"></span></strong></h3>
                                                     </div>
-                                                    <button type="submit">Send
-                                                            Message</button>
+                                                    <button type="submit" class="btn btn-primary">Pesan Jasa</button>
                                                 </div>
                                             </div>
                                         </form>

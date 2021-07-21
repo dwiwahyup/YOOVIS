@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Checkout;
 use App\Models\Kerusakan;
 use App\Models\Transaction;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -101,12 +104,25 @@ class TransactionController extends Controller
     public function transactionHp(Request $request)
     {
         # code...
+        /**
+         * algorithm create no invoice
+         */
+        $length = 10;
+        $random = '';
+        for ($i = 0; $i < $length; $i++) {
+            $random .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('a'), ord('z')));
+        }
+        $no_invoice = 'YOVIS-' . Str::upper($random);
+
+        $user_id = Auth::user()->id;
 
         $category_id = $request->category_id;
 
         //save to DB
         $transaction = Transaction::create([
+            'invoice' => $no_invoice,
             'category_id'   => $category_id,
+            'user_id'   => $user_id,
             'merk' => $request->merk,
             'type'         => $request->type,
             // 'kerusakan_id' => implode(",", $request['kerusakan']),
@@ -121,10 +137,39 @@ class TransactionController extends Controller
 
         if ($transaction) {
             //redirect dengan pesan sukses
-            return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
+
+            $transaction_id = $transaction->id;
+
+            $checkout_create = Checkout::create([
+                'transaction_id' => $transaction_id,
+                'status' => 'pending',
+                'bukti_pembayaran' => 'default.png'
+            ]);
+
+            if ($checkout_create) {
+                return redirect()->route('checkout')->with(['success' => 'Data berhasil disimpan!']);
+            } else {
+                return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
+            }
         } else {
             //redirect dengan pesan error
             return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
         }
+    }
+
+    public function keranjang()
+    {
+        $user_id = Auth::user()->id;
+
+        $transaction = Transaction::Join(
+            'checkouts',
+            'transactions.id',
+            '=',
+            'checkouts.transaction_id'
+        )->where('user_id', $user_id)->get(['transactions.*', 'checkouts.status']);
+
+        // dd($transaction);
+
+        return view('frontend.keranjang', compact('transaction'));
     }
 }
