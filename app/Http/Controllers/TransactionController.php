@@ -147,7 +147,7 @@ class TransactionController extends Controller
             ]);
 
             if ($checkout_create) {
-                return redirect()->route('checkout')->with(['success' => 'Data berhasil disimpan!']);
+                return redirect()->route('checkout.index',$checkout_create->id)->with(['success' => 'Data berhasil disimpan!']);
             } else {
                 return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
             }
