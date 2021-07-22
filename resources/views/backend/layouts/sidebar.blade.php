@@ -18,9 +18,6 @@
                         href="{{ route('admin.pengguna.index') }}" aria-expanded="false">
                         <i class="mdi me-2 mdi-account-multiple-outline"></i><span class="hide-menu">User</span></a>
                 </li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="{{ route('admin.barang.index') }}" aria-expanded="false"><i class="mdi me-2 mdi-package-variant"></i><span
-                            class="hide-menu">Barang</span></a></li>
                             <hr>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="{{ route('admin.category.index') }}" aria-expanded="false"><i class="mdi me-2 mdi-package-variant"></i><span
