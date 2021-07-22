@@ -27,7 +27,11 @@
                 <td>{{$row->type}}</td>
                 <td>{{$row->kerusakan->jenis_kerusakan}}</td>
                 <td>{{$row->status}}</td>
-                <td><a href="{{url('/checkout', $row->id)}}">bayar</a></td>
+                <td>
+                    @if($row->status == 'pending')
+                    <a href="{{url('/checkout', $row->id)}}">bayar</a>
+                    @endif
+                </td>
             </tr>
             @endforeach
         </tbody>

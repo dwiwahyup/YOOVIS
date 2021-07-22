@@ -23,7 +23,7 @@
                     <p>Lakukan Pembayaran sesuai dengan nominal yang tertera lalu upload bukti pembayaran di form bukti
                         pembayaran</p>
                 </div>
-                <form>
+                <form action="{{route('checkout.update', $checkout->id)}}" method="POST" enctype="multipart/form-data">
                     <div class="products">
                         <h3 class="title">Checkout</h3>
                         @foreach ($transaction as $item)
@@ -37,7 +37,7 @@
                     </div>
                     <div class="card-details">
                         <h3 class="title">Form Bukti Pembayaran</h3>
-                        <form action="{{route('checkout.update', $checkout->id)}}" method="POST" enctype="multipart/form-data">
+                        
                             {{csrf_field()}}
                             @method('PUT')
                             <div class="row">
@@ -49,7 +49,6 @@
                                     <button type="submit" class="btn btn-primary btn-block">Proses</button>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </form>
             </div>

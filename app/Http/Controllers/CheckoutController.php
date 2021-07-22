@@ -23,34 +23,25 @@ class CheckoutController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $update = Checkout::where('id', $checkout->id);
-
-        // $update->update([
-        //     'bukti_pembayaran' => $imagePath,
-        //     'status' => 'success'
-        // ]);
-
-        dd($request);
-
-        $checkout = Checkout::find($id);
-
+        $update = Checkout::where('id', $id)->first();
         //store foto
         if (!$request->hasFile('bukti_pembayaran')) {
-            $checkout->bukti_pembayaran = $checkout->bukti_pembayaran;
+            $update->bukti_pembayaran = $update->bukti_pembayaran;
         } else {
-            if (file_exists($checkout->bukti_pembayaran)) {
-                unlink($checkout->bukti_pembayaran);
+            if (file_exists($update->bukti_pembayaran)) {
+                unlink($update->bukti_pembayaran);
             }
             $image = $request->bukti_pembayaran;
             $imageName = time() . $image->getClientOriginalName();
             $image->move('bukti_pembayaran/', $imageName);
             $imagePath = 'bukti_pembayaran/' . $imageName;
-            $checkout->bukti_pembayaran = 'bukti_pembayaran/' . $imageName;
+            $update->update([
+                'bukti_pembayaran' => $imageName,
+                'status' => 'success'
+            ]);
         }
 
-        $checkout->save();
-
-        if ($checkout) {
+        if ($update) {
             # code...
             return redirect()->route('user.home')->with('message', 'Pesanan anda berhasil dibayar mohon ditungu :)');
         }
