@@ -6,6 +6,13 @@
 <section id="hero" class="d-flex align-items-center">
 
     <div class="container">
+        @if(session()->has('message'))
+            <div class="container">
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
+            </div>
+        @endif
         <div class="row">
             <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
                 <h1 data-aos="fade-up">Selamat Datang di YooVis</h1>

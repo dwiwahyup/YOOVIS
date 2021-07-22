@@ -16,7 +16,7 @@ class CreateCheckoutsTable extends Migration
         Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('transaction_id');
-            $table->string('status');
+            $table->enum('status', array('pending', 'success', 'expired'));
             $table->string('bukti_pembayaran');
             $table->timestamps();
         });

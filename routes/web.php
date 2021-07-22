@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\KerusakanhpController;
 use App\Http\Controllers\TransactionController;
@@ -21,7 +22,7 @@ use PhpParser\Node\Expr\AssignOp\Concat;
 
 Route::get('/', function () {
     return view('frontend.home');
-});
+})->name('user.home');
 
 Route::get('/service', function () {
     return view('frontend.gedget');
@@ -29,6 +30,10 @@ Route::get('/service', function () {
 
 Route::get('/service-smartphone', [TransactionController::class, 'serviceHp'])->name('service-smartphone');
 Route::post('/service-smartphone', [TransactionController::class, 'transactionHp'])->name('transaksi.hp');
+
+Route::get('/checkout/{id}', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::put('/checkout/{id}', [CheckoutController::class, 'update'])->name('checkout.update');
+Route::get('/keranjang', [TransactionController::class, 'keranjang'])->name('transaction.keranjang');
 
 Route::get('/service-laptop', function () {
     return view('frontend.service-laptop');
