@@ -24,12 +24,12 @@
                                             <input type="text" value="{{$category->id}}" name="category_id" hidden>
                                             <label class="subtitle">Info Smartphone Anda</label>
                                             <hr>
-                                            <div class="form-group">
+                                            <div class="form-group mt-2">
                                                 <label class="subtitle2">Merk Smartphone</label>
                                                 <input type="text" name="merk" class="form-control"
                                                     placeholder="Merk Smartphone Anda" required>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group mt-2">
                                                 <label class="subtitle2">Type Smartphone</label>
                                                 <input type="text" name="type" class="form-control"
                                                     placeholder="Type Smartphone Anda" required>
@@ -45,8 +45,8 @@
                                                                     value="{{$item->harga}}"
                                                                 onclick='checkCtrl({{$loop->iteration}});'> --}}
                                                                 <input class="checkbox" id="{{$loop->iteration}}"
-                                                                    type="checkbox" data-price="{{$item->harga}}" name="kerusakan"
-                                                                    value="{{$item->id}}">
+                                                                    type="checkbox" data-price="{{$item->harga}}"
+                                                                    name="kerusakan" value="{{$item->id}}">
                                                                 {{$item->jenis_kerusakan}}
                                                             </label>
                                                         </div>
@@ -62,7 +62,7 @@
                                                         <input type="date" name="tanggal" class="form-control"
                                                             placeholder="Click here to select a date" required>
                                                     </div>
-                                                    <div class="form-group" id="datetime">
+                                                    <div class="form-group mt-2" id="datetime">
                                                         <label class="subtitle2">Waktu/jam</label>
                                                         <input type="time" class="form-control" name="waktu">
                                                         {{-- <select class="form-control">
@@ -109,12 +109,6 @@
                             <div class="carousel-item active ">
                                 <img src="{{ asset('frontend/assets/img/servis hp.png')}}"
                                     class="d-none d-sm-block w-100" alt=AC Cleaning>
-                            </div>
-                            <div class="carousel-item  ">
-                                <img src="https://s3-ap-southeast-1.amazonaws.com/apic-asset/services-banner/image_589317e146275.png"
-                                    data-path="https://s3-ap-southeast-1.amazonaws.com/apic-asset/services-banner/image_589317e146275.png"
-                                    onError="this.onerror=null;this.src='http://via.placeholder.com/500x350'"
-                                    class="d-none d-sm-block w-100" alt=AC Cleaning Test>
                             </div>
 
                         </div>

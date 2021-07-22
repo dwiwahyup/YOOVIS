@@ -68,14 +68,13 @@
                                 <td>{{$row->waktu}}</td>
                                 <td>{{$row->alamat}}</td>
                                 <td>{{$row->total}}</td>
-                                <td>{{$row->harga}}</td>
                                 <td>
                                   <div class="btn-group">
                                     <form action="{{ route('admin.transaction.destroy', $row->id)}}" method="POST">
                                       @csrf
                                       <button type="submit" class="btn btn-danger" name="button"
                                       onclick="return confirm('Apakah anda yakin menghapus data ini ?')">
-                                        <i class="fa fa-trash"></i>
+                                        <i class="fa fa-trash"></i></td>
                                       </button>
                                     </form>
                                   </div>

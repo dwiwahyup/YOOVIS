@@ -4,7 +4,7 @@
 <!-- ======= Hero Section ======= -->
 <section>
 <div class="container my-5">
-    <form action="controller" method="get" class="d-md-flex d-sm-block justify-content-between"> <input type="hidden" name="command" value="select-orders">
+    {{-- <form action="controller" method="get" class="d-md-flex d-sm-block justify-content-between"> <input type="hidden" name="command" value="select-orders">
         <h1 class="h5 align-self-center col-3">Search Order</h1>
         <div class="btn-group align-self-center col-12 col-sm-12 col-md-8 col-lg-6"> <select name="searchType" class="btn btn-outline-dark col-3 col-sm-3">
                 <option value="orderId">Order ID</option>
@@ -12,99 +12,52 @@
                 <option value="customer">Customer</option>
                 <option value="status">Status</option>
             </select> <input type="search" name="searchBy" class="col-6 col-sm-6"> <input type="submit" value="Search" class="btn btn-outline-dark col-3 col-sm-3"> </div>
-    </form>
+    </form> --}}
     <div class="d-md-flex d-none justify-content-md-between justify-content-sm-center align-content-center border-bottom border-2 my-2 bg-dark text-light p-3 rounded-3">
         <div class="col-2 text-sm-center text-md-start align-self-center">
-            <h1 class="h5 fw-bold">Order ID</h1>
+            <h1 class="h5 fw-bold">#</h1>
         </div>
         <div class="col-2 align-self-center">
-            <h1 class="h5 fw-bold">Created</h1>
+            <h1 class="h5 fw-bold">Invoice</h1>
         </div>
         <div class="col-3 align-self-center">
-            <h1 class="h5 fw-bold">Customer</h1>
+            <h1 class="h5 fw-bold">Merk Hp</h1>
         </div>
         <div class="col-2 align-self-center">
-            <h1 class="h5 fw-bold">Show details</h1>
+            <h1 class="h5 fw-bold">Kerusakan</h1>
         </div>
         <div class="col-2 align-self-center">
             <h1 class="h5 fw-bold">Status</h1>
+        </div><div class="col-2 align-self-center">
+            <h1 class="h5 fw-bold">Action</h1>
         </div>
     </div>
+    @foreach ($transaction as $row)
     <div class="d-md-flex d-sm-block justify-content-md-between justify-content-sm-center text-center border-bottom border-2 my-2 bg-light p-2 rounded-3">
         <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">2F456DA</h1>
+            <th scope="row">{{$loop->iteration}}</th>
         </div>
         <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">04/12/2021 3:15:24:299</h1>
+            <td>{{$row->invoice}}</td>
         </div>
         <div class="col-md-3 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">Robert Tailor Hamonovych</h1>
+            td>{{$row->merk}}</td>
         </div>
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2"> <a class="btn btn-outline-dark w-100" href="#">Details</a> </div>
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <form method="get" action="controller" class="d-flex btn-group"> <input type="hidden" name="command" value="refresh-order-status"> <select name="status" class="btn btn-outline-dark">
-                    <option value="REGISTERED" class="form-select-button">REGISTERED</option>
-                    <option value="PAID" class="form-select-button">PAID</option>
-                    <option value="CANCELED" class="form-select-button">CANCELED</option>
-                </select> <input type="submit" class="btn btn-outline-dark" value="OK"> </form>
+        <div class="col-md-3 text-sm-center text-md-start align-self-center my-2">
+            <td>{{$row->kerusakan->jenis_kerusakan}}</td>
+        </div>
+        <div class="col-md-3 text-sm-center text-md-start align-self-center my-2">
+            <td>{{$row->status}}</td>
+        </div>
+        <div class="col-md-3 text-sm-center text-md-start align-self-center my-2">
+            @if($row->status == 'pending')
+                    <a href="{{url('/checkout', $row->id)}}">bayar</a>
+                    @endif
         </div>
     </div>
-    <div class="d-md-flex d-sm-block justify-content-md-between justify-content-sm-center text-center border-bottom border-2 my-2 bg-light p-2 rounded-3">
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">D2903WE</h1>
-        </div>
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">03/09/2021 3:15:24:299</h1>
-        </div>
-        <div class="col-md-3 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">Jason Tailor Hamonovych</h1>
-        </div>
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2"> <a class="btn btn-outline-dark w-100" href="#">Details</a> </div>
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <form method="get" action="controller" class="d-flex btn-group"> <input type="hidden" name="command" value="refresh-order-status"> <select name="status" class="btn btn-outline-dark">
-                    <option value="REGISTERED" class="form-select-button">REGISTERED</option>
-                    <option value="PAID" class="form-select-button">PAID</option>
-                    <option value="CANCELED" class="form-select-button">CANCELED</option>
-                </select> <input type="submit" class="btn btn-outline-dark" value="OK"> </form>
-        </div>
+    @endforeach
     </div>
-    <div class="d-md-flex d-sm-block justify-content-md-between justify-content-sm-center text-center border-bottom border-2 my-2 bg-light p-2 rounded-3">
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">5463783D</h1>
-        </div>
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">19/10/2021 3:34:24:299</h1>
-        </div>
-        <div class="col-md-3 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">Mike Orley Hemington</h1>
-        </div>
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2"> <a class="btn btn-outline-dark w-100" href="#">Details</a> </div>
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <form method="get" action="controller" class="d-flex btn-group"> <input type="hidden" name="command" value="refresh-order-status"> <select name="status" class="btn btn-outline-dark">
-                    <option value="REGISTERED" class="form-select-button">REGISTERED</option>
-                    <option value="PAID" class="form-select-button">PAID</option>
-                    <option value="CANCELED" class="form-select-button">CANCELED</option>
-                </select> <input type="submit" class="btn btn-outline-dark" value="OK"> </form>
-        </div>
     </div>
-    <div class="d-md-flex d-sm-block justify-content-md-between justify-content-sm-center text-center border-bottom border-2 my-2 bg-light p-2 rounded-3">
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">324516AD</h1>
-        </div>
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">03/02/2021 22:45:44:999</h1>
-        </div>
-        <div class="col-md-3 text-sm-center text-md-start align-self-center my-2">
-            <h1 class="h6">Jessy Koper Fauer</h1>
-        </div>
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2"> <a class="btn btn-outline-dark w-100" href="#">Details</a> </div>
-        <div class="col-md-2 text-sm-center text-md-start align-self-center my-2">
-            <form method="get" action="controller" class="d-flex btn-group"> <input type="hidden" name="command" value="refresh-order-status"> <select name="status" class="btn btn-outline-dark">
-                    <option value="REGISTERED" class="form-select-button">REGISTERED</option>
-                    <option value="PAID" class="form-select-button">PAID</option>
-                    <option value="CANCELED" class="form-select-button">CANCELED</option>
-                </select> <input type="submit" class="btn btn-outline-dark" value="OK"> </form>
-        </div>
     </div>
 </div>
 </section>

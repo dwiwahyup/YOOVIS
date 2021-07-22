@@ -27,18 +27,15 @@ Route::get('/', function () {
 
 Route::get('/service-smartphone', [TransactionController::class, 'serviceHp'])->name('service-smartphone');
 Route::post('/service-smartphone', [TransactionController::class, 'transactionHp'])->name('transaksi.hp');
+Route::get('/service-laptop', [TransactionController::class, 'serviceLaptop'])->name('service-laptop');
+Route::post('/service-laptop', [TransactionController::class, 'transactionLaptop'])->name('transaksi.laptop');
+Route::get('/service-printer', [TransactionController::class, 'servicePrinter'])->name('service-printer');
+Route::post('/service-printer', [TransactionController::class, 'transactionPrinter'])->name('transaksi.printer');
 
 Route::get('/checkout/{id}', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::put('/checkout/{id}', [CheckoutController::class, 'update'])->name('checkout.update');
 Route::get('/keranjang', [TransactionController::class, 'keranjang'])->name('transaction.keranjang');
 
-Route::get('/service-laptop', function () {
-    return view('frontend.service-laptop');
-})->name('service-laptop');
-
-Route::get('/service-printer', function () {
-    return view('frontend.service-printer');
-})->name('service-printer');
 
 Route::get('/cek-status', function () {
     return view('frontend.cek-status');

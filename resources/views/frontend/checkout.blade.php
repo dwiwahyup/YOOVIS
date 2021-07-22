@@ -30,14 +30,14 @@
                         <div class="item">
                             <span class="price">{{$item->kerusakan->harga}}</span>
                             <p class="item-name">{{$item->kerusakan->jenis_kerusakan}}</p>
-                            <p class="item-description">Lorem ipsum dolor sit amet</p>
+                            <p class="item-description">Harga Tidak Termasuk Sparepart</p>
                         </div>
                         @endforeach
                         <div class="total">Total<span class="price">{{$transaction_total->total}}</span></div>
                     </div>
                     <div class="card-details">
                         <h3 class="title">Form Bukti Pembayaran</h3>
-                        
+
                             {{csrf_field()}}
                             @method('PUT')
                             <div class="row">
