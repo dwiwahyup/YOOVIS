@@ -24,9 +24,6 @@ Route::get('/', function () {
     return view('frontend.home');
 })->name('user.home');
 
-Route::get('/service', function () {
-    return view('frontend.gedget');
-})->name('service');
 
 Route::get('/service-smartphone', [TransactionController::class, 'serviceHp'])->name('service-smartphone');
 Route::post('/service-smartphone', [TransactionController::class, 'transactionHp'])->name('transaksi.hp');
@@ -42,10 +39,6 @@ Route::get('/service-laptop', function () {
 Route::get('/service-printer', function () {
     return view('frontend.service-printer');
 })->name('service-printer');
-
-Route::get('/checkout', function () {
-    return view('frontend.checkout');
-})->name('checkout');
 
 Route::get('/cek-status', function () {
     return view('frontend.cek-status');
