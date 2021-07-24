@@ -30,7 +30,7 @@ class PenggunaController extends Controller
   public function store(Request $request)
   {
     User::create($request->all());
-    return redirect()->route('pengguna.index')
+    return redirect()->route('admin.pengguna.index')
                     ->with('success','Data Pendidikan berhasil ditambahkan.');
   }
 
@@ -43,14 +43,14 @@ class PenggunaController extends Controller
   public function update(User $user,Request $request)
   {
     $user->update($request->all());
-    return redirect()->route('pengguna.index')
+    return redirect()->route('admin.pengguna.index')
                     ->with('success','Data Pendidikan berhasil diperbaharui.');
   }
 
   public function destroy(User $user)
   {
     $user->delete();
-    return redirect()->route('pengguna.index')
+    return redirect()->route('admin.pengguna.index')
                     ->with('success','Data Pendidikan berhasil dihapus.');
   }
 }

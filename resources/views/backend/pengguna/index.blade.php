@@ -42,7 +42,7 @@
                             <p>{{ $message }}</p>
                           </div>
                         @endif
-                        <a href="{{ route('pengguna.create') }}">
+                        <a href="{{ route('admin.pengguna.create') }}">
                           <button class="btn btn-primary" type="button"><i class="fa fa-plus"> Tambah</i></button>
                         </a><br><br>
                       <div class="table-responsive">
@@ -63,8 +63,8 @@
                                 <td>{{$item->role}}</td>
                                 <td>
                                   <div class="btn-group">
-                                    <form action="{{ route('pengguna.destroy',$item->id)}}" method="POST">
-                                      <a href=" {{ route('pengguna.edit',$item->id) }} " class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('admin.pengguna.destroy',$item->id)}}" method="POST">
+                                      <a href=" {{ route('admin.pengguna.edit',$item->id) }} " class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                       @csrf
                                       @method('DELETE')
                                       <button type="submit" class="btn btn-danger" name="button"
