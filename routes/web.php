@@ -54,7 +54,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['roleAdmin']], function () {
     Route::resource('/kerusakan', 'KerusakanController', ['as' => 'admin']);
     Route::get('/transaction', [App\Http\Controllers\TransactionController::class, 'index'])->name('admin.transaction.index');
     Route::post('/transaction/{transaction}', [App\Http\Controllers\TransactionController::class, 'destroy'])->name('admin.transaction.destroy');
-    Route::resource('/barang', 'BarangController', ['as' => 'admin']);
     Route::resource('/pengguna', 'PenggunaController', ['as' => 'admin']);
     Route::resource('/kerusakanhp', 'KerusakanhpController', ['as' => 'admin']);
     Route::resource('/kerusakanlaptop', 'KerusakanlaptopController', ['as' => 'admin']);

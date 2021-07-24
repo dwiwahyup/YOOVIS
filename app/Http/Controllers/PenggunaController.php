@@ -10,47 +10,53 @@ use Illuminate\Support\Facades\DB;
 class PenggunaController extends Controller
 {
     public function __construct()
-  {
-      $this->middleware('auth');
-  }
+    {
+        $this->middleware('auth');
+    }
 
-  public function index()
-  {
-    $users = DB::table('users')->get();
-      return view('backend/pengguna.index', compact('users'));
-  }
+    public function index()
+    {
+        $users = DB::table('users')->get();
+        return view('backend/pengguna.index', compact('users'));
+    }
 
-  public function create()
-  {
-    $users = null;
-    $admin_lecturer = "Menambahkan";
-    return view('backend/pengguna.create', compact('users','admin_lecturer'));
-  }
+    public function create()
+    {
+        $users = null;
+        $admin_lecturer = "Menambahkan";
+        return view('backend/pengguna.create', compact('users', 'admin_lecturer'));
+    }
 
-  public function store(Request $request)
-  {
-    User::create($request->all());
-    return redirect()->route('admin.pengguna.index')
-                    ->with('success','Data Pendidikan berhasil ditambahkan.');
-  }
+    public function store(Request $request)
+    {
+        User::create($request->all());
+        return redirect()->route('admin.pengguna.index')
+            ->with('success', 'Data Pendidikan berhasil ditambahkan.');
+    }
 
-  public function edit(User $users)
-  {
-    $admin_lecturer = "Mengubah";
-    return view('backend/pengguna.create', compact('users','admin_lecturer'));
-  }
+    public function edit(User $users, $id)
+    {
+        $user = User::where('id', $id)->first();
+        $admin_lecturer = "Mengubah";
+        // dd($users);
+        return view('backend/pengguna.create', compact('user', 'admin_lecturer'));
+    }
 
-  public function update(User $user,Request $request)
-  {
-    $user->update($request->all());
-    return redirect()->route('admin.pengguna.index')
-                    ->with('success','Data Pendidikan berhasil diperbaharui.');
-  }
+    public function update(Request $request, $id)
+    {
+        $user_update = User::where('id', $request->id)->first();
 
-  public function destroy(User $user)
-  {
-    $user->delete();
-    return redirect()->route('admin.pengguna.index')
-                    ->with('success','Data Pendidikan berhasil dihapus.');
-  }
+        $user_update->update([
+            'role' => $request->role
+        ]);
+        return redirect()->route('admin.pengguna.index')
+            ->with('success', 'Data Pendidikan berhasil diperbaharui.');
+    }
+
+    public function destroy(User $pengguna)
+    {
+        $pengguna->delete();
+        return redirect()->route('admin.pengguna.index')
+            ->with('success', 'Data Pendidikan berhasil dihapus.');
+    }
 }

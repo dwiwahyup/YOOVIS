@@ -55,6 +55,8 @@
                               <th><i class="icon_briefcase"></i> Waktu</th>
                               <th><i class="icon_briefcase"></i> Alamat</th>
                               <th><i class="icon_briefcase"></i> Total</th>
+                              <th><i class="icon_briefcase"></i> Bukti Transaksi</th>
+                              <th><i class="icon_briefcase"></i> status</th>
                               <th><i class="icon_cogs"></i> Action</th>
                             </tr>
                             @foreach ($transaction as $row)
@@ -68,6 +70,8 @@
                                 <td>{{$row->waktu}}</td>
                                 <td>{{$row->alamat}}</td>
                                 <td>{{$row->total}}</td>
+                                <td><img src="{{asset('bukti_pembayaran/'.$row->bukti_pembayaran)}}" alt="bukti pembayaran" width="100" height="100"></td>
+                                <td>{{$row->status}}</td>
                                 <td>
                                   <div class="btn-group">
                                     <form action="{{ route('admin.transaction.destroy', $row->id)}}" method="POST">

@@ -19,8 +19,16 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transaction = Transaction::all();
+        // $transaction = Transaction::all();
 
+        $transaction = Transaction::Join(
+            'checkouts',
+            'transactions.id',
+            '=',
+            'checkouts.transaction_id'
+        )->get(['transactions.*', 'checkouts.status', 'checkouts.bukti_pembayaran']);
+
+        // dd($transaction);
         return view('backend.transaction.index', compact('transaction'));
     }
 
@@ -165,7 +173,7 @@ class TransactionController extends Controller
             ]);
 
             if ($checkout_create) {
-                return redirect()->route('checkout.index',$checkout_create->id)->with(['success' => 'Data berhasil disimpan!']);
+                return redirect()->route('checkout.index', $checkout_create->id)->with(['success' => 'Data berhasil disimpan!']);
             } else {
                 return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
             }
@@ -221,7 +229,7 @@ class TransactionController extends Controller
             ]);
 
             if ($checkout_create) {
-                return redirect()->route('checkout.index',$checkout_create->id)->with(['success' => 'Data berhasil disimpan!']);
+                return redirect()->route('checkout.index', $checkout_create->id)->with(['success' => 'Data berhasil disimpan!']);
             } else {
                 return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
             }
@@ -277,7 +285,7 @@ class TransactionController extends Controller
             ]);
 
             if ($checkout_create) {
-                return redirect()->route('checkout.index',$checkout_create->id)->with(['success' => 'Data berhasil disimpan!']);
+                return redirect()->route('checkout.index', $checkout_create->id)->with(['success' => 'Data berhasil disimpan!']);
             } else {
                 return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
             }

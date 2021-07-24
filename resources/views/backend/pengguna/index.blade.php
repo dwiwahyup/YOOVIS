@@ -42,9 +42,6 @@
                             <p>{{ $message }}</p>
                           </div>
                         @endif
-                        <a href="{{ route('admin.pengguna.create') }}">
-                          <button class="btn btn-primary" type="button"><i class="fa fa-plus"> Tambah</i></button>
-                        </a><br><br>
                       <div class="table-responsive">
                         <table class="table table-striped table-advance table-hover">
                           <tbody>
