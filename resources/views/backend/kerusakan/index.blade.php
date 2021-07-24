@@ -8,12 +8,12 @@
   <div class="page-breadcrumb">
     <div class="row align-items-center">
       <div class="col-md-6 col-8 align-self-center">
-        <h3 class="page-title mb-0 p-0">Barang</h3>
+        <h3 class="page-title mb-0 p-0">Kerusakan</h3>
         <div class="d-flex align-items-center">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Barang</li>
+              <li class="breadcrumb-item active" aria-current="page">Kerusakan</li>
             </ol>
           </nav>
         </div>
@@ -35,35 +35,39 @@
           <div class="col-sm-12">
               <div class="card">
                   <div class="card-body">
-                      <h4 class="card-title">Tabel Barang</h4>
+                      <h4 class="card-title">Tabel Karusakan</h4>
                       <div class="panel-body">
                         @if ($message = Session::get('success'))
                           <div class="alert alert-success">
                             <p>{{ $message }}</p>
                           </div>
                         @endif
-                        <a href="{{ route('admin.barang.create') }}">
+                        <a href="{{ route('admin.kerusakan.create') }}">
                           <button class="btn btn-primary" type="button"><i class="fa fa-plus"> Tambah</i></button>
                         </a><br><br>
                       <div class="table-responsive">
                         <table class="table table-striped table-advance table-hover">
                           <tbody>
                             <tr>
-                              <th><i class="icon_briefcase"></i> Nama Barang</th>
+                              <th><i class="icon_briefcase"></i> Jenis Kerusakan</th>
+                              <th><i class="icon_briefcase"></i> Kategori</th>
+                              <th><i class="icon_briefcase"></i> Harga</th>
                               <th><i class="icon_cogs"></i> Action</th>
                             </tr>
-                            @foreach ($barang as $item)
+                            @foreach ($kerusakan as $row)
                               <tr>
-                                <td>{{$item->nama_barang}}</td>
+                                <td>{{$row->jenis_kerusakan}}</td>
+                                <td>{{$row->category->name}}</td>
+                                <td>{{$row->harga}}</td>
                                 <td>
                                   <div class="btn-group">
-                                    <form action="{{ route('barang.destroy', $item->id_barang)}}" method="POST">
-                                      <a href=" {{ route('barang.edit' ,$item->id_barang) }} " class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('admin.kerusakan.destroy', $row->id)}}" method="POST">
+                                      <a href=" {{ route('admin.kerusakan.edit' ,$row->id) }} " class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                       @csrf
                                       @method('DELETE')
                                       <button type="submit" class="btn btn-danger" name="button"
                                       onclick="return confirm('Apakah anda yakin menghapus data ini ?')">
-                                        <i class="fa fa-trash-o"></i>
+                                        <i class="fa fa-trash"></i>
                                       </button>
                                     </form>
                                   </div>

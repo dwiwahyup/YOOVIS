@@ -18,22 +18,17 @@
                         href="{{ route('admin.pengguna.index') }}" aria-expanded="false">
                         <i class="mdi me-2 mdi-account-multiple-outline"></i><span class="hide-menu">User</span></a>
                 </li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="{{ route('admin.barang.index') }}" aria-expanded="false"><i class="mdi me-2 mdi-package-variant"></i><span
-                            class="hide-menu">Barang</span></a></li>
+                            <hr>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="{{ route('admin.category.index') }}" aria-expanded="false"><i class="mdi me-2 mdi-package-variant"></i><span
                             class="hide-menu">Category</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="{{ route('admin.kerusakanhp.index') }}" aria-expanded="false"><i class="mdi me-2 mdi-cellphone-android"></i><span
-                            class="hide-menu">Kerusakan HP</span></a></li>
+                        href="{{ route('admin.kerusakan.index') }}" aria-expanded="false"><i class="mdi me-2 mdi-wrench"></i><span
+                            class="hide-menu">Kerusakan</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="{{ route('admin.kerusakanlaptop.index') }}" aria-expanded="false"><i class="mdi me-2 mdi-laptop-mac"></i><span
-                            class="hide-menu">Kerusakan Laptop</span></a></li>
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="{{ route('admin.kerusakanprinter.index') }}" aria-expanded="false"><i class="mdi me-2 mdi-printer"></i><span
-                            class="hide-menu">Kerusakan Printer</span></a></li>
-
+                        href="{{ route('admin.transaction.index') }}" aria-expanded="false"><i class="mdi me-2 mdi-trending-up"></i><span
+                            class="hide-menu">Transaction</span></a></li>
+                            <hr>
             </ul>
 
         </nav>

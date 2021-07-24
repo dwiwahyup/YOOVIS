@@ -16,4 +16,9 @@ class Category extends Model
     {
         return $this->hasMany(Kerusakan::class);
     }
+
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

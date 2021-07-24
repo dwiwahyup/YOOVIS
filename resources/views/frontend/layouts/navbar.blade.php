@@ -76,6 +76,8 @@
                         <ul>
                             <li><a href="#">Profile</a></li>
                             <hr>
+                            <li><a href="keranjang">Keranjang</a></li>
+                            <hr>
                             <li><a href="#"> <a class="dropdown" href="{{ route('logout') }}" onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

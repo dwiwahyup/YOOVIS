@@ -60,7 +60,7 @@ class LoginController extends Controller
       if (auth()->attempt($login)) {
         //JIKA BERHASIL AKAN REDIRECT PADA HOME
         if (Auth::user()->role == 1) {
-            return redirect()->route('home');
+            return redirect()->route('admin');
           }
           else if(Auth::user()->role == 2){
               return redirect()->route('user');

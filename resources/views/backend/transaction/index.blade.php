@@ -8,12 +8,12 @@
   <div class="page-breadcrumb">
     <div class="row align-items-center">
       <div class="col-md-6 col-8 align-self-center">
-        <h3 class="page-title mb-0 p-0">Kerusakan Laptop</h3>
+        <h3 class="page-title mb-0 p-0">Transaksi</h3>
         <div class="d-flex align-items-center">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Kerusakan Laptop</li>
+              <li class="breadcrumb-item active" aria-current="page">Transaksi</li>
             </ol>
           </nav>
         </div>
@@ -35,37 +35,46 @@
           <div class="col-sm-12">
               <div class="card">
                   <div class="card-body">
-                      <h4 class="card-title">Tabel Kerusakan Laptop</h4>
+                      <h4 class="card-title">Tabel Transaksi</h4>
                       <div class="panel-body">
                         @if ($message = Session::get('success'))
                           <div class="alert alert-success">
                             <p>{{ $message }}</p>
                           </div>
                         @endif
-                        <a href="{{ route('kerusakanlaptop.create') }}">
-                          <button class="btn btn-primary" type="button"><i class="fa fa-plus"> Tambah</i></button>
-                        </a><br><br>
                       <div class="table-responsive">
                         <table class="table table-striped table-advance table-hover">
                           <tbody>
                             <tr>
-                              <th><i class="icon_briefcase"></i>Jenis Kerusakan</th>
-                              <th><i class="icon_briefcase"></i>Harga</th>
+                              <th><i class="icon_briefcase"></i>Faktur</th>
+                              <th><i class="icon_briefcase"></i>Kategori</th>
+                              <th><i class="icon_briefcase"></i>Merk</th>
+                              <th><i class="icon_briefcase"></i> Type</th>
+                              <th><i class="icon_briefcase"></i> Kerusakan</th>
+                              <th><i class="icon_briefcase"></i> Tanggal</th>
+                              <th><i class="icon_briefcase"></i> Waktu</th>
+                              <th><i class="icon_briefcase"></i> Alamat</th>
+                              <th><i class="icon_briefcase"></i> Total</th>
                               <th><i class="icon_cogs"></i> Action</th>
                             </tr>
-                            @foreach ($kerusakan_laptop as $item)
+                            @foreach ($transaction as $row)
                               <tr>
-                                <td>{{$item->jenis_kerusakan}}</td>
-                                <td>{{$item->harga}}</td>
+                                <td>{{$row->id}}</td>
+                                <td>{{$row->category->name}}</td>
+                                <td>{{$row->merk}}</td>
+                                <td>{{$row->type}}</td>
+                                <td>{{$row->kerusakan->jenis_kerusakan}}</td>
+                                <td>{{$row->tanggal}}</td>
+                                <td>{{$row->waktu}}</td>
+                                <td>{{$row->alamat}}</td>
+                                <td>{{$row->total}}</td>
                                 <td>
                                   <div class="btn-group">
-                                    <form action="{{ route('kerusakanlaptop.destroy', $item->id)}}" method="POST">
-                                      <a href=" {{ route('kerusakanlaptop.edit' ,$item->id) }} " class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('admin.transaction.destroy', $row->id)}}" method="POST">
                                       @csrf
-                                      @method('DELETE')
                                       <button type="submit" class="btn btn-danger" name="button"
                                       onclick="return confirm('Apakah anda yakin menghapus data ini ?')">
-                                        <i class="fa fa-trash"></i>
+                                        <i class="fa fa-trash"></i></td>
                                       </button>
                                     </form>
                                   </div>

@@ -63,7 +63,7 @@
                                       @method('DELETE')
                                       <button type="submit" class="btn btn-danger" name="button"
                                       onclick="return confirm('Apakah anda yakin menghapus data ini ?')">
-                                        <i class="fa fa-trash-o"></i>
+                                        <i class="fa fa-trash"></i>
                                       </button>
                                     </form>
                                   </div>
