@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class TransactionController extends Controller
 {
@@ -26,9 +27,8 @@ class TransactionController extends Controller
             'transactions.id',
             '=',
             'checkouts.transaction_id'
-        )->get(['transactions.*', 'checkouts.status', 'checkouts.bukti_pembayaran']);
-
-        // dd($transaction);
+        )->get(['transactions.*', 'checkouts.status','checkouts.id as checkouts_id', 'checkouts.bukti_pembayaran']);
+        
         return view('backend.transaction.index', compact('transaction'));
     }
 
@@ -85,6 +85,32 @@ class TransactionController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function stat($id)
+    {
+        # code...
+        $tes = Checkout::find($id)->first();
+        // dd($tes);
+        $chekout = DB::table('checkouts')->where('id',$id)->update([
+            'status' => 'success',
+            'bukti_pembayaran' => $tes->bukti_pembayaran
+        ]);
+
+        return redirect()->route('admin.transaction.index');
+    }
+
+    public function statServices($id)
+    {
+        # code...
+        $tes = Checkout::find($id)->first();
+        // dd($tes);
+        $chekout = DB::table('checkouts')->where('id',$id)->update([
+            'status' => 'pick up',
+            'bukti_pembayaran' => $tes->bukti_pembayaran
+        ]);
+
+        return redirect()->route('admin.transaction.index');
     }
 
     /**

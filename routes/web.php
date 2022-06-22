@@ -45,15 +45,18 @@ Route::get('/user', function () {
     return view('frontend.home');
 })->name('user');
 
+// 
 Auth::routes();
 // route dengan prefix admin
 Route::group(['prefix' => 'admin', 'middleware' => ['roleAdmin']], function () {
     // route dengan role admin
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
     Route::resource('/category', 'CategoryController', ['as' => 'admin']);
     Route::resource('/kerusakan', 'KerusakanController', ['as' => 'admin']);
     Route::get('/transaction', [App\Http\Controllers\TransactionController::class, 'index'])->name('admin.transaction.index');
     Route::post('/transaction/{transaction}', [App\Http\Controllers\TransactionController::class, 'destroy'])->name('admin.transaction.destroy');
+    Route::put('/transaction/status/{transaction}', [App\Http\Controllers\TransactionController::class, 'stat'])->name('transaction.status');
+    Route::put('/transaction/{transaction}', [App\Http\Controllers\TransactionController::class, 'statServices'])->name('admin.transaction.services');
     Route::resource('/pengguna', 'PenggunaController', ['as' => 'admin']);
     Route::resource('/kerusakanhp', 'KerusakanhpController', ['as' => 'admin']);
     Route::resource('/kerusakanlaptop', 'KerusakanlaptopController', ['as' => 'admin']);

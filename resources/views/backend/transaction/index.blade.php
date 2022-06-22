@@ -74,13 +74,29 @@
                                 <td>{{$row->status}}</td>
                                 <td>
                                   <div class="btn-group">
-                                    <form action="{{ route('admin.transaction.destroy', $row->id)}}" method="POST">
+                                    @if($row->status == "pending")
+                                    <form action="{{ route('transaction.status', $row->checkouts_id)}}" method="POST">
                                       @csrf
-                                      <button type="submit" class="btn btn-danger" name="button"
+                                      @method('put')
+                                      <button type="submit" class="btn btn-warning" name="button"
                                       onclick="return confirm('Apakah anda yakin menghapus data ini ?')">
-                                        <i class="fa fa-trash"></i></td>
+                                        <i class="fa fa-check"></i></td>
                                       </button>
                                     </form>
+                                    @elseif($row->status == "success")
+                                    <form action="{{ route('admin.transaction.services', $row->checkouts_id)}}" method="POST">
+                                      @csrf
+                                      @method('put')
+                                      <button type="submit" class="btn btn-info" name="button"
+                                      onclick="return confirm('Apakah anda yakin menghapus data ini ?')">
+                                        <i class="fa fa-check"></i></td>
+                                      </button>
+                                    </form>
+                                    @else
+                                    <button type="submit" class="btn btn-success" name="button" disabled>
+                                        <i class="fa fa-check"></i></td>
+                                      </button>
+                                    @endif
                                   </div>
                                 </td>
                               </tr>

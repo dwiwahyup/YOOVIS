@@ -1,19 +1,18 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use App\Models\User;
 
-class ExampleTest extends TestCase
+class Simpletest extends TestCase
 {
     /**
-     * A basic test example.
+     * A basic unit test example.
      *
      * @return void
      */
-    public function testBasicTest()
+    public function login()
     {
         $user = User::factory()->create();
 

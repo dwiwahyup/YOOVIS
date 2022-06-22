@@ -86,7 +86,7 @@
                                                     <div class="form-group">
                                                         <label class="subtitle2">Alamat</label>
                                                         <input type="text" name="alamat" class="form-control" id="name"
-                                                            placeholder="Jember" required>
+                                                            placeholder="Isikan alamat anda secara lengkap (jalan,rt/rw,kelurahan)" required>
                                                     </div>
                                                     <div class="alert alert-success mt-3" id="msg" role="alert">
                                                         <h3><strong>Total : <span class="price"></span></strong></h3>

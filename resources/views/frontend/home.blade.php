@@ -105,7 +105,8 @@
 
             <div class="home_hours text-center mt-5 d-none d-sm-block">
                 Jam Kerja : Senin - Jumat : 08:00 - 19:00 WIB &nbsp;&nbsp;&nbsp;
-                <span>Sabtu - Minggu Hari Libur : 09:00 - 18:00 WIB</span>
+                <span>Sabtu - Minggu : 09:00 - 18:00 WIB</span>
+                <br>Tanggal Merah Libur
             </div>
         </div>
 

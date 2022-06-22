@@ -21,7 +21,10 @@
                 <div class="block-heading">
                     <h2>Pembayaran</h2>
                     <p>Lakukan Pembayaran sesuai dengan nominal yang tertera lalu upload bukti pembayaran di form bukti
-                        pembayaran</p>
+                        pembayaran ke Nomer Rekening  
+                        <br>0917867484 
+                        <br>Atas Nama Anju Alicia Johan
+                        </p>
                 </div>
                 <form action="{{route('checkout.update', $checkout->id)}}" method="POST" enctype="multipart/form-data">
                     <div class="products">

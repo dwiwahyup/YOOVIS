@@ -74,7 +74,7 @@
                         <a href="#" class="getstartednew"><b><img
                                     src="{{ asset('frontend/assets/img/profil.png')}}">{{ Auth::user()-> name }}</b></a>
                         <ul>
-                            <li><a href="#">Profile</a></li>
+                            <!-- <li><a href="#">Profile</a></li> -->
                             <hr>
                             <li><a href="keranjang">Keranjang</a></li>
                             <hr>

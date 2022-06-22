@@ -40,7 +40,7 @@
                     </div>
                     <div>
                         <i class="ri-phone-line"></i>
-                        <p>0822-8888-0101</p>
+                        <a href="https://wa.me/6281232230124">0812-3223-0124</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
         <div class="row d-flex align-items-center">
             <div class="col-lg-6 text-lg-left text-center">
                 <div class="copyright">
-                    &copy; Copyright <strong>Kelompok 2</strong>. All Rights Reserved
+                    &copy; Copyright <strong>B-Telu</strong>. All Rights Reserved
                 </div>
                 <div class="credits">
                     <!-- All the links in the footer should remain intact. -->
